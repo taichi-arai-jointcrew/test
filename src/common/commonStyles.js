@@ -6,8 +6,9 @@ const CommonStyles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#114400',
     alignContent:'flex-start',
+    borderColor: '#ff0000',
   },
   welcome: {
     fontSize: 20,

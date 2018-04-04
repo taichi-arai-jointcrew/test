@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from "react";
-import { Dimensions, Image, /*LayoutRectangle,*/ Platform, Text, TouchableWithoutFeedback, View } from "react-native";
+import { KeyboardAvoidingView, Dimensions, Image, /*LayoutRectangle,*/ Platform, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
 import CommonStyles from "../common/commonStyles";
 
 const instructions:string = Platform.select({
@@ -75,7 +75,7 @@ export default class Chat extends Component<Props, State> {
     return (
       <View style={CommonStyles.container}>
         <TouchableWithoutFeedback onPress={this.onPress}>
-          <View style={{ width: "100%", top: this.state.y }}>
+          <View style={{ flex:1, backgroundColor:"#000033", width: "100%", top: this.state.y }}>
             <Image
               style={{ height: 200, left: this.state.bgX }}
               resizeMode={Image.resizeMode.cover}
@@ -86,14 +86,15 @@ export default class Chat extends Component<Props, State> {
                 // console.log("#", bgW, ratio, layout.height, layout.width);
               }}
             />
-            <View style={{ marginTop: -200 }}>
+            <KeyboardAvoidingView style={{ marginTop: 0 }} behavior="padding">
               <Text style={{ color: "#ff0000" }}>??---{this.props.text}</Text>
               <Text style={CommonStyles.instructions}>{instructions}</Text>
               <Text style={CommonStyles.instructions}>{instructions}</Text>
               <Text style={CommonStyles.instructions}>{instructions}</Text>
               <Text style={CommonStyles.instructions}>{instructions}</Text>
               <Text style={CommonStyles.instructions}>{instructions}</Text>
-            </View>
+              <TextInput style={{width: '100%', height: 40, borderColor: 'gray', borderWidth :1 }} />
+            </KeyboardAvoidingView>
           </View>
         </TouchableWithoutFeedback>
       </View>
