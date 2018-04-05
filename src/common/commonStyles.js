@@ -1,25 +1,30 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet, Platform } from "react-native";
 
 const CommonStyles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    backgroundColor: '#114400',
-    alignContent:'flex-start',
-    borderColor: '#ff0000',
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    backgroundColor: "#8fb",
+    alignContent: "flex-start",
+    marginTop: Platform.select({ android: 20 })
   },
-  welcome: {
+  center: {
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  fontWhite: {
+    color: '#fff',
+  },
+  fontGrey: {
+    color: '#666'
+  },
+  fontEnhance: {
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  }
 });
 
 export default CommonStyles;

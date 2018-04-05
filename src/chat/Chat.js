@@ -74,8 +74,9 @@ export default class Chat extends Component<Props, State> {
   render() {
     return (
       <View style={CommonStyles.container}>
+        <Text style={{flex:1, color:"#fff"}}>test text</Text>
         <TouchableWithoutFeedback onPress={this.onPress}>
-          <View style={{ flex:1, backgroundColor:"#000033", width: "100%", top: this.state.y }}>
+          <View style={{ flex:1, backgroundColor: "#9df", width: "100%", top: this.state.y }}>
             <Image
               style={{ height: 200, left: this.state.bgX }}
               resizeMode={Image.resizeMode.cover}
@@ -86,14 +87,15 @@ export default class Chat extends Component<Props, State> {
                 // console.log("#", bgW, ratio, layout.height, layout.width);
               }}
             />
-            <KeyboardAvoidingView style={{ marginTop: 0 }} behavior="padding">
+            <KeyboardAvoidingView style={{ flex:1, marginTop: 0 }} behavior="padding">
               <Text style={{ color: "#ff0000" }}>??---{this.props.text}</Text>
-              <Text style={CommonStyles.instructions}>{instructions}</Text>
-              <Text style={CommonStyles.instructions}>{instructions}</Text>
-              <Text style={CommonStyles.instructions}>{instructions}</Text>
-              <Text style={CommonStyles.instructions}>{instructions}</Text>
-              <Text style={CommonStyles.instructions}>{instructions}</Text>
-              <TextInput style={{width: '100%', height: 40, borderColor: 'gray', borderWidth :1 }} />
+              <Text style={CommonStyles.instructions, { flex:1 }}>{instructions}</Text>
+              <Text style={CommonStyles.instructions, { flex:1 }}>{instructions}</Text>
+              <Text style={CommonStyles.instructions, { flex:1 }}>{instructions}</Text>
+              <Text style={CommonStyles.instructions, { flex:1 }}>{instructions}</Text>
+              <Text style={CommonStyles.instructions, { flex:1 }}>{instructions}</Text>
+              <Text style={CommonStyles.instructions, { flex:1 }}>{instructions}</Text>
+              <TextInput style={{ backgroundColor:"#fff", width: "100%", height: 40, borderColor: "gray", borderWidth :1 }} />
             </KeyboardAvoidingView>
           </View>
         </TouchableWithoutFeedback>

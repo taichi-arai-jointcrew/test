@@ -61057,7 +61057,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   }(_react2.Component));
 
   exports.default = App;
-},493,[114,131,494,522,523,524],"src/App.js");
+},493,[114,131,494,522,523,526],"src/App.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   'use strict';
 
@@ -62867,22 +62867,29 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   var CommonStyles = _reactNative.StyleSheet.create({
     container: {
       flex: 1,
-      flexDirection: 'column',
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start',
-      backgroundColor: '#114400',
-      alignContent: 'flex-start',
-      borderColor: '#ff0000'
+      flexDirection: "column",
+      justifyContent: "flex-start",
+      alignItems: "flex-start",
+      backgroundColor: "#8fb",
+      alignContent: "flex-start",
+      marginTop: _reactNative.Platform.select({
+        android: 20
+      })
     },
-    welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10
+    center: {
+      alignContent: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+      alignSelf: 'center'
     },
-    instructions: {
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 5
+    fontWhite: {
+      color: '#fff'
+    },
+    fontGrey: {
+      color: '#666'
+    },
+    fontEnhance: {
+      fontSize: 20
     }
   });
 
@@ -62902,7 +62909,42 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   exports.default = (0, _redux.createStore)(_reducers2.default);
-},523,[505,525],"src/redux/Store.js");
+},523,[505,524],"src/redux/Store.js");
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _redux = _require(_dependencyMap[0], "redux");
+
+  var _testReducer = _require(_dependencyMap[1], "./testReducer");
+
+  var _testReducer2 = _interopRequireDefault(_testReducer);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  exports.default = (0, _redux.combineReducers)({
+    testReducer: _testReducer2.default
+  });
+},524,[505,525],"src/redux/reducers/index.js");
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    var initialState = {
+        testState: 'testStateVal'
+    };
+
+    exports.default = function () {
+        var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+        var action = arguments[1];
+
+        switch (action.type) {
+            default:
+                return state;
+        }
+    };
+},525,[],"src/redux/reducers/testReducer.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -62925,6 +62967,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   var _Chat = _require(_dependencyMap[3], "./chat/Chat");
 
   var _Chat2 = _interopRequireDefault(_Chat);
+
+  var _ChatView = _require(_dependencyMap[4], "./chat/ChatView");
+
+  var _ChatView2 = _interopRequireDefault(_ChatView);
+
+  var _commonStyles = _require(_dependencyMap[5], "./common/commonStyles");
+
+  var _commonStyles2 = _interopRequireDefault(_commonStyles);
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62968,19 +63018,33 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         return _react3.default.createElement(
           _reactNative.View,
           {
-            style: {
-              flex: 1
+            style: _commonStyles2.default.container,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 14
+            }
+          },
+          _react3.default.createElement(_reactNative.StatusBar, {
+            hidden: true,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 15
+            }
+          }),
+          _react3.default.createElement(_ChatView2.default, {
+            props: {
+              state: {
+                chat: {
+                  messages: {
+                    id: 0,
+                    text: "test"
+                  }
+                }
+              }
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 12
-            }
-          },
-          _react3.default.createElement(_Chat2.default, {
-            text: "this text provided from parent.",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 13
+              lineNumber: 16
             }
           })
         );
@@ -62991,42 +63055,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   }(_react2.Component));
 
   exports.default = Router;
-},524,[114,131,12,527],"src/Router.js");
-__d(function (global, _require, module, exports, _dependencyMap) {
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  var _redux = _require(_dependencyMap[0], "redux");
-
-  var _testReducer = _require(_dependencyMap[1], "./testReducer");
-
-  var _testReducer2 = _interopRequireDefault(_testReducer);
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-  exports.default = (0, _redux.combineReducers)({
-    testReducer: _testReducer2.default
-  });
-},525,[505,526],"src/redux/reducers/index.js");
-__d(function (global, _require, module, exports, _dependencyMap) {
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-    var initialState = {
-        testState: 'testStateVal'
-    };
-
-    exports.default = function () {
-        var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-        var action = arguments[1];
-
-        switch (action.type) {
-            default:
-                return state;
-        }
-    };
-},526,[],"src/redux/reducers/testReducer.js");
+},526,[114,131,12,527,529,522],"src/Router.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -63176,12 +63205,26 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }
           },
           _react3.default.createElement(
+            _reactNative.Text,
+            {
+              style: {
+                flex: 1,
+                color: "#fff"
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 77
+              }
+            },
+            "test text"
+          ),
+          _react3.default.createElement(
             _reactNative.TouchableWithoutFeedback,
             {
               onPress: this.onPress,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 77
+                lineNumber: 78
               }
             },
             _react3.default.createElement(
@@ -63189,13 +63232,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 style: {
                   flex: 1,
-                  backgroundColor: "#000033",
+                  backgroundColor: "#9df",
                   width: "100%",
                   top: this.state.y
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 78
+                  lineNumber: 79
                 }
               },
               _react3.default.createElement(_reactNative.Image, {
@@ -63208,19 +63251,20 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 onLayout: function onLayout(event) {},
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 79
+                  lineNumber: 80
                 }
               }),
               _react3.default.createElement(
                 _reactNative.KeyboardAvoidingView,
                 {
                   style: {
+                    flex: 1,
                     marginTop: 0
                   },
                   behavior: "padding",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 89
+                    lineNumber: 90
                   }
                 },
                 _react3.default.createElement(
@@ -63231,7 +63275,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 90
+                      lineNumber: 91
                     }
                   },
                   "??---",
@@ -63240,18 +63284,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 _react3.default.createElement(
                   _reactNative.Text,
                   {
-                    style: _commonStyles2.default.instructions,
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 91
-                    }
-                  },
-                  instructions
-                ),
-                _react3.default.createElement(
-                  _reactNative.Text,
-                  {
-                    style: _commonStyles2.default.instructions,
+                    style: (_commonStyles2.default.instructions, {
+                      flex: 1
+                    }),
                     __source: {
                       fileName: _jsxFileName,
                       lineNumber: 92
@@ -63262,7 +63297,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 _react3.default.createElement(
                   _reactNative.Text,
                   {
-                    style: _commonStyles2.default.instructions,
+                    style: (_commonStyles2.default.instructions, {
+                      flex: 1
+                    }),
                     __source: {
                       fileName: _jsxFileName,
                       lineNumber: 93
@@ -63273,7 +63310,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 _react3.default.createElement(
                   _reactNative.Text,
                   {
-                    style: _commonStyles2.default.instructions,
+                    style: (_commonStyles2.default.instructions, {
+                      flex: 1
+                    }),
                     __source: {
                       fileName: _jsxFileName,
                       lineNumber: 94
@@ -63284,7 +63323,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 _react3.default.createElement(
                   _reactNative.Text,
                   {
-                    style: _commonStyles2.default.instructions,
+                    style: (_commonStyles2.default.instructions, {
+                      flex: 1
+                    }),
                     __source: {
                       fileName: _jsxFileName,
                       lineNumber: 95
@@ -63292,16 +63333,43 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   instructions
                 ),
+                _react3.default.createElement(
+                  _reactNative.Text,
+                  {
+                    style: (_commonStyles2.default.instructions, {
+                      flex: 1
+                    }),
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 96
+                    }
+                  },
+                  instructions
+                ),
+                _react3.default.createElement(
+                  _reactNative.Text,
+                  {
+                    style: (_commonStyles2.default.instructions, {
+                      flex: 1
+                    }),
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 97
+                    }
+                  },
+                  instructions
+                ),
                 _react3.default.createElement(_reactNative.TextInput, {
                   style: {
-                    width: '100%',
+                    backgroundColor: "#fff",
+                    width: "100%",
                     height: 40,
-                    borderColor: 'gray',
+                    borderColor: "gray",
                     borderWidth: 1
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 96
+                    lineNumber: 98
                   }
                 })
               )
@@ -63328,5 +63396,533 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 		"type": "jpg"
 	});
 },528,[329],"assets/panorama.jpg");
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  var _jsxFileName = "/Users/taichiarai/test/src/chat/ChatView.js";
+
+  var _react = _require(_dependencyMap[0], "react");
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _reactNative = _require(_dependencyMap[1], "react-native");
+
+  var _ChatStyle = _require(_dependencyMap[2], "./ChatStyle");
+
+  var _ChatStyle2 = _interopRequireDefault(_ChatStyle);
+
+  var _commonStyles = _require(_dependencyMap[3], "../common/commonStyles");
+
+  var _commonStyles2 = _interopRequireDefault(_commonStyles);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  var ChatView = function ChatView(props) {
+    var chat = props.chat;
+    var _imageHeight = 200;
+    return _react2.default.createElement(
+      _reactNative.View,
+      {
+        style: _ChatStyle2.default.container,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 10
+        }
+      },
+      _react2.default.createElement(
+        _reactNative.View,
+        {
+          style: _ChatStyle2.default.closer,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 11
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.TouchableWithoutFeedback,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 12
+            }
+          },
+          _react2.default.createElement(
+            _reactNative.Text,
+            {
+              style: [_commonStyles2.default.fontWhite, _commonStyles2.default.fontEnhance],
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 13
+              }
+            },
+            "Back"
+          )
+        )
+      ),
+      _react2.default.createElement(
+        _reactNative.View,
+        {
+          style: _ChatStyle2.default.header,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 17
+          }
+        },
+        _react2.default.createElement(_reactNative.Image, {
+          source: _require(_dependencyMap[4], "../../assets/panorama.jpg"),
+          style: {
+            height: _imageHeight,
+            left: 0,
+            opacity: 0.5
+          },
+          resizeMode: _reactNative.Image.resizeMode.cover,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 18
+          }
+        }),
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            style: [_commonStyles2.default.fontGrey, {
+              marginTop: -_imageHeight + 10
+            }],
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 19
+            }
+          },
+          "GeneLife Concierge"
+        )
+      ),
+      _react2.default.createElement(
+        _reactNative.KeyboardAvoidingView,
+        {
+          style: _ChatStyle2.default.messageArea,
+          behavior: "padding",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 22
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.View,
+          {
+            style: _ChatStyle2.default.messageArea,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 23
+            }
+          },
+          _react2.default.createElement(
+            _reactNative.ScrollView,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 24
+              }
+            },
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 25
+                }
+              },
+              "message area"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 26
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 27
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 28
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 29
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 30
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 31
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 32
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 33
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 34
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 35
+                }
+              },
+              "message area"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 36
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 37
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 38
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 39
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 40
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 41
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 42
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 43
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 44
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 45
+                }
+              },
+              "message area"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 46
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 47
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 48
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 49
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 50
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 51
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 52
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 53
+                }
+              },
+              "message"
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 54
+                }
+              },
+              "message"
+            )
+          )
+        ),
+        _react2.default.createElement(
+          _reactNative.View,
+          {
+            style: _ChatStyle2.default.inputer,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 61
+            }
+          },
+          _react2.default.createElement(
+            _reactNative.TouchableWithoutFeedback,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 62
+              }
+            },
+            _react2.default.createElement(_reactNative.Image, {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 63
+              }
+            })
+          ),
+          _react2.default.createElement(
+            _reactNative.TouchableWithoutFeedback,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 65
+              }
+            },
+            _react2.default.createElement(_reactNative.Image, {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 66
+              }
+            })
+          ),
+          _react2.default.createElement(_reactNative.TextInput, {
+            style: [_ChatStyle2.default.inputer],
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 68
+            }
+          })
+        )
+      )
+    );
+  };
+
+  exports.default = ChatView;
+},529,[114,12,530,522,528],"src/chat/ChatView.js");
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _reactNative = _require(_dependencyMap[0], "react-native");
+
+  var ChatStyles = _reactNative.StyleSheet.create({
+    container: {
+      flex: 1,
+      width: "100%",
+      justifyContent: "flex-start",
+      alignItems: "flex-start",
+      backgroundColor: "#f0f0f0",
+      alignContent: "flex-start",
+      borderColor: "#ff0000"
+    },
+    closer: {
+      flex: 1,
+      width: "100%",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 10,
+      backgroundColor: "rgba(50,50,50,.5)"
+    },
+    header: {
+      flex: 4,
+      alignSelf: "center",
+      alignItems: "center"
+    },
+    messageArea: {
+      flex: 10,
+      width: "100%"
+    },
+    inputer: {
+      flex: 1,
+      backgroundColor: "#fff",
+      width: "100%",
+      padding: 5,
+      borderColor: "#333",
+      borderWidth: _reactNative.StyleSheet.hairlineWidth
+    }
+  });
+
+  exports.default = ChatStyles;
+},530,[12],"src/chat/ChatStyle.js");
 require(23);
 require(11);
