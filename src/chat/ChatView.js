@@ -1,25 +1,20 @@
-import React, { Component } from "react";
-import { KeyboardAvoidingView, Text, TextInput, View, ScrollView, Image, TouchableWithoutFeedback } from "react-native";
-import ChatStyles from "./ChatStyle";
-import CommonStyles from "../common/commonStyles";
+import React from 'react';
+import { KeyboardAvoidingView, Text, TextInput, View, ScrollView, Image, TouchableWithoutFeedback } from 'react-native';
+import ChatStyles from './ChatStyle';
+import CommonStyles from '../common/commonStyles';
 
 const ChatView = props => {
-  const { chat } = props;
+  // const { chat } = props;
   const _imageHeight = 200;
   return (
     <View style={ChatStyles.container}>
-      <View style={ChatStyles.closer}>
-        <TouchableWithoutFeedback>
-          <Text style={[CommonStyles.fontWhite, CommonStyles.fontEnhance]}>Back</Text>
-        </TouchableWithoutFeedback>
-      </View>
 
       <View style={ChatStyles.header}>
-        <Image source={require("../../assets/panorama.jpg")} style={{ height: _imageHeight, left: 0, opacity: 0.5 }} resizeMode={Image.resizeMode.cover} />
+        <Image source={require('../../assets/panorama.jpg')} style={{ height: _imageHeight, left: 0, opacity: 0.5 }} resizeMode={Image.resizeMode.cover} />
         <Text style={[CommonStyles.fontGrey, { marginTop: -_imageHeight + 10 }]}>GeneLife Concierge</Text>
       </View>
 
-      <KeyboardAvoidingView style={ChatStyles.messageArea} behavior="padding">
+      <KeyboardAvoidingView style={ChatStyles.messageArea} behavior='padding'>
         <View style={ChatStyles.messageArea}>
           <ScrollView>
             <Text>message area</Text>

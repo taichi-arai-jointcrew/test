@@ -1,13 +1,14 @@
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet, Platform } from 'react-native';
 
 const CommonStyles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-    backgroundColor: "#8fb",
-    alignContent: "flex-start",
+    width: '100%',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    backgroundColor: '#8fb',
+    alignContent: 'flex-start',
     marginTop: Platform.select({ android: 20 })
   },
   center: {

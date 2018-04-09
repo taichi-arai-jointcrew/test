@@ -4,11 +4,10 @@
  * @flow
  */
 
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
-import CommonStyles from "./common/commonStyles";
-import Store from "./redux/Store";
+import Store from './redux/Store';
 import Router from './Router';
 
 // eslint-disable-next-line
